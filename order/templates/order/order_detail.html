@@ -55,8 +55,11 @@
                         <h2><span id = "totalprice" data-price = "{{ object.price }}"></span></h2>
                     </div>
                     <div>
-                        <!-- <button type ="button" class = "btn btn-light border-0">장바구니 수량<span class = 'badge bg-secondary'><span id = 'totalQuantity'></span></button> -->
+                        <form action = "" method = "post">
+                        {% csrf_token %}
+                            <button type = "submit" class = "btn btn-outline-primary">장바구니 담기</button>
 
+                        </form>
                     </div>
     
                 </div>
