@@ -38,3 +38,8 @@ def modify_cart(request):
     }
     
     return JsonResponse(context)
+
+def order_recipe(request):
+    cart = Cart.objects.get(user=request.user)
+    
+    pass
