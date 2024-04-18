@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .card-img-top {
+        width: 100%;
+        height: 200px; /* 원하는 높이 값으로 설정하세요 */
+        object-fit: contain; /* 이미지가 카드 바디에 꽉 차도록 설정 */
+    }
+    a {
+       text-decoration-line: none;
+       color: black;
+    }
+
+    a:hover {
+    color : red;
+    text-decoration: underline;
+    }
+</style>
+
+<body>
+    <div class = "container">
+        <div class="row justify-content-center"> <!-- 가운데 정렬을 위한 클래스 -->
+            <div class="col-md-12 mt-10 text-center"> <!-- 텍스트 가운데 정렬을 위한 클래스 -->
+                <h1 class = "mt-4">{{ user }}의 shop입니다</h1>
+            </div>
+        </div>
+
+    <div class = "row justify-content-center">
+        <div class="col-md-12">
+            <h3 class="mt-5">음식</h3>
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                {% for food in object_list %}
+                <div class="col">
+                    <div class="card">
+                        <a href = "{% url 'seller:food_detail' pk=food.id %}">
+                            <div class = "card-body">
+                                <div class = "row">
+                                    <div class = "col-md-12 mb-2">
+                                        <img src="{{ food.image_url }}" class="card-img-top" alt="{{ food.name }}">
+                                    </div>
+                                    <div class = "col-md-12">
+                                        <div class = "card-text">
+                                            <h5 class ="card-title">{{food.name}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+        <div class="d-flex justify-content-end mb-3">
+            <a href="{% url 'seller:add_food' %}" class="btn btn-primary">제품 등록</a>
+        </div>
+    
+    </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<style>
+    .card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .card img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+<body>
+    <div class="container mt-5">
+        <div class="card mt-5">
+            <div class="card-body">
+                <h3 class="card-title text-center mb-4">음식 상세 정보</h3>
+                <div class="mb-3">
+                    <h5 class="card-subtitle mb-2 text-muted">판매자</h5>
+                    <p class="card-text">{{ user }}</p>
+                </div>
+                <div class="mb-3">
+                    <h5 class="card-subtitle mb-2 text-muted">음식이름</h5>
+                    <p class="card-text">{{ object.name }}</p>
+                </div>
+                <div class="mb-3">
+                    <h5 class="card-subtitle mb-2 text-muted">가격</h5>
+                    <p class="card-text">{{ object.price }}</p>
+                </div>
+                <div class="mb-3">
+                    <h5 class="card-subtitle mb-2 text-muted">상세설명</h5>
+                    <p class="card-text">{{ object.description }}</p>
+                </div>
+                <div>
+                    <img src="{{ object.image_url }}" class="card-img-top" alt="음식 이미지">
+                </div>
+
+            <form action = "{% url 'seller:food_delete' pk=object.id %}" method = "post">
+                {% csrf_token %}
+                <button type = "submit" class = "btn btn-danger mt-2">삭제하기</button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

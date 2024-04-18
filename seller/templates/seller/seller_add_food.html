@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+<div class="container">
+    <h1>상품 등록 페이지</h1>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class = "row g-3 mb-3"></div>
+            <div class="col-md-4">
+                <label for="name" class="form-label">음식이름 :</label>
+                <input type="text" name="name" class="form-control" id = "name">
+            </div>
+            <div class="col-md-4">
+                <label for="price" class="form-label">가격 :</label>
+                <input type="text" name="price" class="form-control" id="price">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">설명</label>
+                <textarea name="description" rows="2" class="form-control" rows="4" cols="50"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="file" class="form-label">사진을 올려주세요 :</label>
+                <input type="file" name="file" class="form-control" id = "file">
+            </div>
+        </div>
+        <div class ="text-center">
+            <input type="submit" value="제출" class="btn btn-primary">
+        </div>
+    </form>
+</div>
+
+<!-- 부트스트랩 자바스크립트 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
